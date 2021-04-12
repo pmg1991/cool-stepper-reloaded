@@ -4,7 +4,7 @@
 
 **Cool Stepper Reloaded** is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
 
-This project was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep an active development for this great widget.
+This project was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep an active development for this great widget. Thanks to emrade and all developers that helped to build such a amazing widget.
 
 ## Screenshots
 
