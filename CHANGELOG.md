@@ -1,3 +1,6 @@
+## [2.0.0] - 12/04/2021
+ - Launch as Cool Stepper Reloaded
+
 ## [1.1.7] - 11/03/2021
 
 - Update flushbar
