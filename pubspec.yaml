@@ -2,6 +2,7 @@ name: cool_stepper_reloaded
 description: CoolStepper Reloaded is a new widget based on CoolStepper, that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
 version: 2.0.0
 homepage: https://github.com/lcsvcn/cool-stepper-reloaded/
+repository: https://github.com/lcsvcn/cool-stepper-reloaded/
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
