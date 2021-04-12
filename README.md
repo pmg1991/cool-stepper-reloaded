@@ -1,15 +1,10 @@
-# cool_stepper_reloaded
+# Cool Stepper Reloaded
+
+[![Pub Version](https://img.shields.io/pub/v/smart_alert_dialog)](https://pub.dev/packages/cool_stepper_reloaded)
 
 **Cool Stepper Reloaded** is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
 
-It was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep an active development for this great widget. 
-
-## Usage
-
-To use this package, add cool_stepper_reloaded as a dependency in your pubspec.yaml file.
-And add this import to your file.
-
-import 'package:cool_stepper/cool_stepper_reloaded.dart';
+This project was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep an active development for this great widget.
 
 ## Screenshots
 
