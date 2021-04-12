@@ -1,13 +1,13 @@
 library cool_stepper;
 
-export 'package:cool_stepper/src/models/cool_step.dart';
-export 'package:cool_stepper/src/models/cool_stepper_config.dart';
+export 'package:cool_stepper_reloaded/src/models/cool_step.dart';
+export 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
 
 import 'package:another_flushbar/flushbar.dart';
 
-import 'package:cool_stepper/src/models/cool_step.dart';
-import 'package:cool_stepper/src/models/cool_stepper_config.dart';
-import 'package:cool_stepper/src/widgets/cool_stepper_view.dart';
+import 'package:cool_stepper_reloaded/src/models/cool_step.dart';
+import 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
+import 'package:cool_stepper_reloaded/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
 /// CoolStepper
