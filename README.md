@@ -1,6 +1,6 @@
 # Cool Stepper Reloaded
 
-[![Pub Version](https://img.shields.io/pub/v/smart_alert_dialog)](https://pub.dev/packages/cool_stepper_reloaded)
+[![Pub Version](https://img.shields.io/pub/v/cool_stepper_reloaded)](https://pub.dev/packages/cool_stepper_reloaded)
 
 **Cool Stepper Reloaded** is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
 
