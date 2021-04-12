@@ -2,7 +2,8 @@
 
 **Cool Stepper Reloaded** is a widget that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
 
-It was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep the development of the great widget. 
+It was forked from [Cool Stepper](https://github.com/emrade/flutter-cool-stepper), since I needed a null-safety package and keep an active development for this great widget. 
+
 ## Usage
 
 To use this package, add cool_stepper_reloaded as a dependency in your pubspec.yaml file.
@@ -12,7 +13,7 @@ import 'package:cool_stepper/cool_stepper_reloaded.dart';
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/joaovvrodrigues/flutter-cool-stepper/master/screenshots/3.png" width="280"/><img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="250"/> <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="250"/>
+<img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="150"/>  <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="150"/>
 
 ### Example
 
