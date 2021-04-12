@@ -1,4 +1,4 @@
-library cool_stepper;
+library cool_stepper_reloaded;
 
 export 'package:cool_stepper_reloaded/src/models/cool_step.dart';
 export 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';

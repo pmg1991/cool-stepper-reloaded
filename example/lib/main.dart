@@ -1,6 +1,5 @@
-import 'package:cool_stepper/cool_stepper.dart';
+import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Cool Stepper'),
