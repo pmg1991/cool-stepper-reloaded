@@ -1,5 +1,7 @@
 ## [2.0.1] - 12/04/2021
- - Deprecated unnecessary method and improved null safety - removed unnecessary checks
+ - Deprecated [iconColor], use [icon] instead.
+ It will be removed in the next major version.
+ - Improved null safety - removed unnecessary checks
 
 ## [2.0.0] - 12/04/2021
  - Launch as Cool Stepper Reloaded
