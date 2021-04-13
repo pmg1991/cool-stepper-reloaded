@@ -14,25 +14,35 @@ This project was forked from [Cool Stepper](https://github.com/emrade/flutter-co
 
 ```
 CoolStepper(
-   onCompleted: () {},
+   onCompleted: () => { // submit information to server },
    steps: List<CoolStep>[
        CoolStep(
         title: "Basic Information",
         subtitle: "Please fill some of the basic information to get started",
-        content: Container()
+        content:  // Add the widget to get basic info here
+       ),
+       CoolStep(
+        title: "Add Your address",
+        subtitle: "Please fill your Address",
+        content: // Add the widget to get address info here
+       ),
+       CoolStep(
+        title: "Add a profile picture",
+        subtitle: "Please add a profile picture if you want",
+        content: // Add the widget to get profile pic here
        ),
    ],
 );
 ```
 
-So that the validation occurs normally returns a String "null", I made this modification to not change the structure of the code.
+This is a example of validation. The validation expects a function to validate the whole form. It will return a error String or null if everything is right.
 ```
 validation: () {
-          if (!_formKey.currentState!.validate()) {
-            return 'Fill form correctly';
-          }
-          return 'null';
-        },
+ if (!_formKey.currentState!.validate()) {
+   return 'Fill form correctly';   // Error message to be shown
+ }
+ return null;
+},
 ```
         
 ### CoolStepper Class
