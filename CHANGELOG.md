@@ -1,6 +1,7 @@
 ## [2.0.1] - 12/04/2021
  - Deprecated [iconColor], use [icon] instead.
  It will be removed in the next major version.
+ - Added [isHeaderEnabled] boolean to enable or not the header
  - Improved null safety - removed unnecessary checks
 
 ## [2.0.0] - 12/04/2021
