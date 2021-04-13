@@ -81,6 +81,7 @@ class _CoolStepperState extends State<CoolStepper> {
   void onStepNext() {
     final validation = widget.steps[currentStep].validation;
 
+    /// [validation] is null, no validation rule
     if (validation == null) {
       if (!_isLast(currentStep)) {
         setState(() {
@@ -91,27 +92,29 @@ class _CoolStepperState extends State<CoolStepper> {
       } else {
         widget.onCompleted();
       }
-    } else {
-      // Show Error Snakbar
-      if (widget.showErrorSnackbar) {
-        final flush = Flushbar(
-          message: validation(),
-          flushbarStyle: FlushbarStyle.FLOATING,
-          margin: EdgeInsets.all(8.0),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          icon: Icon(
-            Icons.info_outline,
-            size: 28.0,
-            color: Theme.of(context).primaryColor,
-          ),
-          duration: Duration(seconds: 2),
-          leftBarIndicatorColor: Theme.of(context).primaryColor,
-        );
-        flush.show(context);
-        // final snackBar = SnackBar(content: Text(validation));
-        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      }
+      return;
     }
+
+    /// [showErrorSnackbar] is false, No error snackbar rule
+    if (!widget.showErrorSnackbar) {
+      return;
+    }
+
+    /// [showErrorSnackbar] is true, Show error snackbar rule
+    final flush = Flushbar(
+      message: validation(),
+      flushbarStyle: FlushbarStyle.FLOATING,
+      margin: EdgeInsets.all(8.0),
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      icon: Icon(
+        Icons.info_outline,
+        size: 28.0,
+        color: Theme.of(context).primaryColor,
+      ),
+      duration: Duration(seconds: 2),
+      leftBarIndicatorColor: Theme.of(context).primaryColor,
+    );
+    flush.show(context);
   }
 
   void onStepBack() {
@@ -131,10 +134,11 @@ class _CoolStepperState extends State<CoolStepper> {
         physics: NeverScrollableScrollPhysics(),
         children: widget.steps.map((step) {
           return CoolStepperView(
-              step: step,
-              contentPadding: widget.contentPadding,
-              config: widget.config,
-              isHeaderEnabled: widget.isHeaderEnabled);
+            step: step,
+            contentPadding: widget.contentPadding,
+            config: widget.config,
+            isHeaderEnabled: widget.isHeaderEnabled,
+          );
         }).toList(),
       ),
     );
