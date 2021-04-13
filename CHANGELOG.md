@@ -1,3 +1,6 @@
+## [2.0.1] - 12/04/2021
+ - Deprecated unnecessary method and improved null safety - removed unnecessary checks
+
 ## [2.0.0] - 12/04/2021
  - Launch as Cool Stepper Reloaded
 
