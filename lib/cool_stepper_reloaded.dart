@@ -10,7 +10,7 @@ import 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper_reloaded/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
-/// [CoolStepper] has two required params [steps] and [onCompleted]
+/// [CoolStepper] has two required params: [steps] and [onCompleted]
 class CoolStepper extends StatefulWidget {
   /// The [steps] of the stepper whose titles, subtitles, content always get shown.
   ///

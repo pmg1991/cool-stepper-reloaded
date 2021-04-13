@@ -2,10 +2,20 @@ import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:cool_stepper_reloaded/src/models/cool_step.dart';
 import 'package:flutter/material.dart';
 
+/// [CoolStepperView] is the step builder, each step page is build here
 class CoolStepperView extends StatelessWidget {
+  /// [step] is the individual step widget
   final CoolStep step;
+
+  /// [contentPadding] is the padding of the content inside the [step] content
   final EdgeInsetsGeometry contentPadding;
+
+  /// [CoolStepperConfig] is the configuration of the widget, read the component to know it defaults values
   final CoolStepperConfig config;
+
+  /// [isHeaderEnabled] enable the default header, if you want to build a custom title or header, disable this
+  ///
+  /// [default] is true
   final bool isHeaderEnabled;
 
   const CoolStepperView({
@@ -61,6 +71,7 @@ class CoolStepperView extends StatelessWidget {
       ),
     );
 
+    /// [body] is always show, this will contain the [step] content
     final body = Expanded(
       child: SingleChildScrollView(
         padding: contentPadding,
