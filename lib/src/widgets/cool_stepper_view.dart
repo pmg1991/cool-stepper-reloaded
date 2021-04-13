@@ -4,28 +4,26 @@ import 'package:flutter/material.dart';
 
 class CoolStepperView extends StatelessWidget {
   final CoolStep step;
-  final VoidCallback? onStepNext;
-  final VoidCallback? onStepBack;
-  final EdgeInsetsGeometry? contentPadding;
-  final CoolStepperConfig? config;
+  final EdgeInsetsGeometry contentPadding;
+  final CoolStepperConfig config;
+  final bool isHeaderEnabled;
 
   const CoolStepperView({
-    Key? key,
     required this.step,
-    this.onStepNext,
-    this.onStepBack,
-    this.contentPadding,
-    this.config,
-  }) : super(key: key);
+    required this.contentPadding,
+    required this.config,
+    required this.isHeaderEnabled,
+  });
+
   @override
   Widget build(BuildContext context) {
-    final title = Container(
+    /// [header] contains title, description and icon
+    final header = Container(
       width: double.infinity,
       margin: EdgeInsets.only(bottom: 20.0),
       padding: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: config!.headerColor ??
-            Theme.of(context).primaryColor.withOpacity(0.1),
+        color: config.headerColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,23 +36,18 @@ class CoolStepperView extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Text(
                   step.title.toUpperCase(),
-                  style: config!.titleTextStyle ??
-                      TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black38,
-                      ),
+                  style: config.titleTextStyle,
                   maxLines: 2,
                 ),
               ),
               SizedBox(width: 5.0),
               Visibility(
-                visible: config!.icon == null,
-                replacement: config!.icon ?? SizedBox(),
+                visible: config.iconColor != null,
+                replacement: config.icon,
                 child: Icon(
                   Icons.help_outline,
                   size: 18,
-                  color: config!.iconColor ?? Colors.black38,
+                  color: config.iconColor ?? Colors.black38,
                 ),
               )
             ],
@@ -62,18 +55,13 @@ class CoolStepperView extends StatelessWidget {
           SizedBox(height: 5.0),
           Text(
             step.subtitle,
-            style: config!.subtitleTextStyle ??
-                TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
-                ),
+            style: config.subtitleTextStyle,
           )
         ],
       ),
     );
 
-    final content = Expanded(
+    final body = Expanded(
       child: SingleChildScrollView(
         padding: contentPadding,
         child: step.content,
@@ -83,7 +71,7 @@ class CoolStepperView extends StatelessWidget {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [title, content],
+        children: (isHeaderEnabled) ? [body] : [body, header],
       ),
     );
   }

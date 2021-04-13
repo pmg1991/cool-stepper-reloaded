@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class CoolStepperConfig {
   /// The text that should be displayed for the back button
@@ -9,22 +10,22 @@ class CoolStepperConfig {
   /// The text that should be displayed for the next button
   ///
   /// [default] is 'NEXT'
-  final String? nextText;
+  final String nextText;
 
   /// The text that describes the progress
   ///
   /// [default] is 'STEP'
-  final String? stepText;
+  final String stepText;
 
   /// The text that describes the progress
   ///
   /// [default] is 'OF'
-  final String? ofText;
+  final String ofText;
 
   /// This is the background color of the header
-  final Color? headerColor;
+  final Color headerColor;
 
-  /// [DEPRECATED]
+  /// [Deprecated] Use [icon] instead
   /// This is the color of the icon
   ///
   /// [This does not apply when icon is set]
@@ -32,13 +33,13 @@ class CoolStepperConfig {
   final Color? iconColor;
 
   /// This icon replaces the default icon
-  final Icon? icon;
+  final Icon icon;
 
   /// This is the textStyle for the title text
-  final TextStyle? titleTextStyle;
+  final TextStyle titleTextStyle;
 
   /// This is the textStyle for the subtitle text
-  final TextStyle? subtitleTextStyle;
+  final TextStyle subtitleTextStyle;
 
   /// A List of string that when supplied will override 'backText'
   ///
@@ -53,18 +54,30 @@ class CoolStepperConfig {
   /// The text that should be displayed for the next button on the final step
   ///
   /// [default] is 'FINISH'
-  final String? finalText;
+  final String finalText;
 
   const CoolStepperConfig({
     this.backText = 'PREV',
     this.nextText = 'NEXT',
     this.stepText = 'STEP',
     this.ofText = 'OF',
-    this.headerColor,
+    this.headerColor = const Color(0xffbdbdbd),
     this.iconColor,
-    this.icon,
-    this.titleTextStyle,
-    this.subtitleTextStyle,
+    this.icon = const Icon(
+      Icons.help_outline,
+      size: 18,
+      color: Color(0x61000000),
+    ),
+    this.titleTextStyle = const TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      color: Color(0x61000000),
+    ),
+    this.subtitleTextStyle = const TextStyle(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      color: Color(0xFF000000),
+    ),
     this.backTextList,
     this.nextTextList,
     this.finalText = 'FINISH',

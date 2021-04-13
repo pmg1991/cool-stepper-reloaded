@@ -10,26 +10,33 @@ import 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper_reloaded/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
-/// CoolStepper
+/// [CoolStepper] has two required params [steps] and [onCompleted]
 class CoolStepper extends StatefulWidget {
-  /// The steps of the stepper whose titles, subtitles, content always get shown.
+  /// The [steps] of the stepper whose titles, subtitles, content always get shown.
   ///
   /// The length of [steps] must not change.
   final List<CoolStep> steps;
 
-  /// Actions to take when the final stepper is passed
+  /// [onCompleted] is called at final step, use this to submit collected information
   final VoidCallback onCompleted;
 
-  /// Padding for the content inside the stepper
+  /// [contentPadding] is the padding for the content inside the stepper
+  ///
+  ///  [default] value is EdgeInsets.symmetric(horizontal: 20.0)
   final EdgeInsetsGeometry contentPadding;
 
-  /// CoolStepper config
+  /// [CoolStepperConfig] is the widget configuration, set every text color and style
   final CoolStepperConfig config;
 
-  /// This determines if or not a snackbar displays your error message if validation fails
+  /// [showErrorSnackbar] determines if or not a snackbar displays your error message if validation fails
   ///
-  /// default is false
+  /// [default] is false
   final bool showErrorSnackbar;
+
+  /// [isHeaderEnabled] determines if it will build with or without a header
+  ///
+  /// [default] is true
+  final bool isHeaderEnabled;
 
   const CoolStepper({
     required this.steps,
@@ -37,6 +44,7 @@ class CoolStepper extends StatefulWidget {
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
     this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
+    this.isHeaderEnabled = true,
   });
 
   @override
@@ -44,19 +52,18 @@ class CoolStepper extends StatefulWidget {
 }
 
 class _CoolStepperState extends State<CoolStepper> {
-  PageController? _controller = PageController();
+  final PageController _controller = PageController();
 
   int currentStep = 0;
 
   @override
   void dispose() {
-    _controller!.dispose();
-    _controller = null;
+    _controller.dispose();
     super.dispose();
   }
 
   Future<void>? switchToPage(int page) {
-    _controller!.animateToPage(
+    _controller.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
@@ -72,8 +79,9 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   void onStepNext() {
-    final validation = widget.steps[currentStep].validation();
-    if (validation == 'null') {
+    final validation = widget.steps[currentStep].validation;
+
+    if (validation == null) {
       if (!_isLast(currentStep)) {
         setState(() {
           currentStep++;
@@ -87,7 +95,7 @@ class _CoolStepperState extends State<CoolStepper> {
       // Show Error Snakbar
       if (widget.showErrorSnackbar) {
         final flush = Flushbar(
-          message: validation,
+          message: validation(),
           flushbarStyle: FlushbarStyle.FLOATING,
           margin: EdgeInsets.all(8.0),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -123,17 +131,17 @@ class _CoolStepperState extends State<CoolStepper> {
         physics: NeverScrollableScrollPhysics(),
         children: widget.steps.map((step) {
           return CoolStepperView(
-            step: step,
-            contentPadding: widget.contentPadding,
-            config: widget.config,
-          );
+              step: step,
+              contentPadding: widget.contentPadding,
+              config: widget.config,
+              isHeaderEnabled: widget.isHeaderEnabled);
         }).toList(),
       ),
     );
 
     final counter = Container(
       child: Text(
-        "${widget.config.stepText ?? 'STEP'} ${currentStep + 1} ${widget.config.ofText ?? 'OF'} ${widget.steps.length}",
+        '${widget.config.stepText} ${currentStep + 1} ${widget.config.ofText} ${widget.steps.length}',
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -143,12 +151,12 @@ class _CoolStepperState extends State<CoolStepper> {
     String getNextLabel() {
       String nextLabel;
       if (_isLast(currentStep)) {
-        nextLabel = widget.config.finalText ?? 'FINISH';
+        nextLabel = widget.config.finalText;
       } else {
         if (widget.config.nextTextList != null) {
           nextLabel = widget.config.nextTextList![currentStep];
         } else {
-          nextLabel = widget.config.nextText ?? 'NEXT';
+          nextLabel = widget.config.nextText;
         }
       }
       return nextLabel;
@@ -162,7 +170,7 @@ class _CoolStepperState extends State<CoolStepper> {
         if (widget.config.backTextList != null) {
           backLabel = widget.config.backTextList![currentStep - 1];
         } else {
-          backLabel = widget.config.backText ?? 'PREV';
+          backLabel = widget.config.backText;
         }
       }
       return backLabel;
@@ -195,7 +203,10 @@ class _CoolStepperState extends State<CoolStepper> {
 
     return Container(
       child: Column(
-        children: [content, buttons],
+        children: [
+          content,
+          buttons,
+        ],
       ),
     );
   }

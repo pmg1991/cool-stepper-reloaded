@@ -4,12 +4,12 @@ class CoolStep {
   final String title;
   final String subtitle;
   final Widget content;
-  final String Function() validation;
+  final String Function()? validation;
 
   CoolStep({
-    required this.title,
-    required this.subtitle,
     required this.content,
-    required this.validation,
+    this.title = '',
+    this.subtitle = '',
+    this.validation,
   });
 }
