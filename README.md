@@ -62,9 +62,11 @@ validation: () {
 | nextTextList      | List<String> | A List of string that when supplied will override 'nextText'Must be one less than the number of steps since the 'finalText' attribute is able to set the value for the final step's next button |                                    null                                     |
 
 ## ToDo
-- [ ] Added TextStyle parameter to customize to Next Button
-- [ ] Added TextStyle parameter to customize to Back Button
+- [x] Added TextStyle parameter to customize to Next Button(2.2.0)
+- [x] Added TextStyle parameter to customize to Back Button (2.2.0)
 - [ ] Added TextStyle parameter to customize to Steps x of N
+- [ ] Added Option to change button background color for Next Button
+- [ ] Added Option to change button background color for Next Button
 
 Please open an issue if something doesn't work or is not clear enough.
 

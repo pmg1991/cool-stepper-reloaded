@@ -2,17 +2,27 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
 class CoolStepperConfig {
-  /// The text that should be displayed for the back button
+  /// [backText] Changes the text that should be displayed for the back button
   ///
   /// [default] is 'BACK'
   final String backText;
 
-  /// The text that should be displayed for the next button
+  /// [backTextStyle] Changes the text style for the back button
+  ///
+  /// [default] is TextStyle(color: Colors.grey)
+  final TextStyle backTextStyle;
+
+  /// [nextText] Changes the text that should be displayed for the next button
   ///
   /// [default] is 'NEXT'
   final String nextText;
 
-  /// The text that describes the progress
+  /// [nextTextStyle] Changes the text style for the next button
+  ///
+  /// [default] is TextStyle(color: Colors.green)
+  final TextStyle nextTextStyle;
+
+  /// [stepText] Changes The text that describes the progress
   ///
   /// [default] is 'STEP'
   final String stepText;
@@ -81,5 +91,7 @@ class CoolStepperConfig {
     this.backTextList,
     this.nextTextList,
     this.finalText = 'FINISH',
+    this.nextTextStyle = const TextStyle(color: Colors.green),
+    this.backTextStyle = const TextStyle(color: Colors.grey),
   });
 }

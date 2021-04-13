@@ -166,7 +166,7 @@ class _CoolStepperState extends State<CoolStepper> {
       return nextLabel;
     }
 
-    String getPrevLabel() {
+    String getPreviousLabel() {
       String backLabel;
       if (_isFirst(currentStep)) {
         backLabel = '';
@@ -187,8 +187,8 @@ class _CoolStepperState extends State<CoolStepper> {
           TextButton(
             onPressed: onStepBack,
             child: Text(
-              getPrevLabel(),
-              style: TextStyle(color: Colors.grey),
+              getPreviousLabel(),
+              style: widget.config.backTextStyle,
             ),
           ),
           counter,
@@ -196,9 +196,7 @@ class _CoolStepperState extends State<CoolStepper> {
             onPressed: onStepNext,
             child: Text(
               getNextLabel(),
-              style: TextStyle(
-                color: Colors.green,
-              ),
+              style: widget.config.nextTextStyle,
             ),
           ),
         ],
