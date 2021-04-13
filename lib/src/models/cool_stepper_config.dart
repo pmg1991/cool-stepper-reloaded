@@ -3,30 +3,32 @@ import 'package:flutter/widgets.dart';
 class CoolStepperConfig {
   /// The text that should be displayed for the back button
   ///
-  /// default is 'BACK'
-  final String? backText;
+  /// [default] is 'BACK'
+  final String backText;
 
   /// The text that should be displayed for the next button
   ///
-  /// default is 'NEXT'
+  /// [default] is 'NEXT'
   final String? nextText;
 
   /// The text that describes the progress
   ///
-  /// default is 'STEP'
+  /// [default] is 'STEP'
   final String? stepText;
 
   /// The text that describes the progress
   ///
-  /// default is 'OF'
+  /// [default] is 'OF'
   final String? ofText;
 
   /// This is the background color of the header
   final Color? headerColor;
 
+  /// [DEPRECATED]
   /// This is the color of the icon
   ///
   /// [This does not apply when icon is set]
+  @Deprecated('Use [icon] instead, this will be removed soon!')
   final Color? iconColor;
 
   /// This icon replaces the default icon
@@ -50,14 +52,14 @@ class CoolStepperConfig {
 
   /// The text that should be displayed for the next button on the final step
   ///
-  /// default is 'FINISH'
+  /// [default] is 'FINISH'
   final String? finalText;
 
   const CoolStepperConfig({
-    this.backText,
-    this.nextText,
-    this.stepText,
-    this.ofText,
+    this.backText = 'PREV',
+    this.nextText = 'NEXT',
+    this.stepText = 'STEP',
+    this.ofText = 'OF',
     this.headerColor,
     this.iconColor,
     this.icon,
@@ -65,6 +67,6 @@ class CoolStepperConfig {
     this.subtitleTextStyle,
     this.backTextList,
     this.nextTextList,
-    this.finalText,
+    this.finalText = 'FINISH',
   });
 }

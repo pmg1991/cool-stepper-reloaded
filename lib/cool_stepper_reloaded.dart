@@ -32,21 +32,12 @@ class CoolStepper extends StatefulWidget {
   final bool showErrorSnackbar;
 
   const CoolStepper({
-    Key? key,
     required this.steps,
     required this.onCompleted,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
-    this.config = const CoolStepperConfig(
-      backText: 'PREV',
-      nextText: 'NEXT',
-      stepText: 'STEP',
-      ofText: 'OF',
-      finalText: 'FINISH',
-      backTextList: null,
-      nextTextList: null,
-    ),
+    this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
-  }) : super(key: key);
+  });
 
   @override
   _CoolStepperState createState() => _CoolStepperState();
