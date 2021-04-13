@@ -60,3 +60,14 @@ validation: () {
 | subtitleTextStyle | TextStyle    | This is the textStyle for the subtitle text                                                                                                                                                     |  TextStyle(fontSize: 14.0,fontWeight: FontWeight.w600,color: Colors.black)  |
 | backTextList      | List<String> | A List of string that when supplied will override 'backText'. Must be one less than the number of steps since for the first step, the backText won't be visible                                 |                                    null                                     |
 | nextTextList      | List<String> | A List of string that when supplied will override 'nextText'Must be one less than the number of steps since the 'finalText' attribute is able to set the value for the final step's next button |                                    null                                     |
+
+## ToDo
+- [ ] Added TextStyle parameter to customize to Next Button
+- [ ] Added TextStyle parameter to customize to Back Button
+- [ ] Added TextStyle parameter to customize to Steps x of N
+
+Please open an issue if something doesn't work or is not clear enough.
+
+## License
+
+See [LICENSE.md](LICENSE.md)
