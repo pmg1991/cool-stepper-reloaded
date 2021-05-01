@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       CoolStep(
         title: 'Basic Information',
         subtitle: 'Please fill some of the basic information to get started',
+        alignment: Alignment.center,
         content: Form(
           key: _formKey,
           child: Column(
@@ -80,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
       CoolStep(
         title: 'Select your role',
         subtitle: 'Choose a role that better defines you',
+        alignment: Alignment.center,
         content: Container(
           child: Row(
             children: <Widget>[
@@ -100,7 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final stepper = CoolStepper(
       showErrorSnackbar: true,
-      contentPadding: EdgeInsets.all(10),
+      isHeaderEnabled: false,
+      contentPadding: EdgeInsets.only(left: 40, right: 40),
       onCompleted: () {
         final flush = Flushbar(
           message: 'Steps completed!',

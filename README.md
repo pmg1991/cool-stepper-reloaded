@@ -53,6 +53,8 @@ validation: () {
 | steps       | List<CoolStep>    | @required                                                                  |                                         Null                                          |
 | config      | CoolStepperConfig | Helps to customize your stepper                                            | CoolStepperConfig(backText: "BACK", nextText: "NEXT", stepText: "STEP", ofText: "OF") |
 
+alignment                                            | Alignment.topCenter | This will change content aligment, between header (if enabled) and button
+
 ### CoolStepperConfig Properties
 
 | Attribute         | Data type    | Description                                                                                                                                                                                     |                                Default Value                                |

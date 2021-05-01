@@ -1,3 +1,6 @@
+## [2.3.0] - 01/05/2021
+ - Added [alignment] to [CoolStep]
+
 ## [2.2.1] - 01/05/2021
  - Fixed [isHeaderEnabled] logic
  - Fixed Snackbar and next step logic

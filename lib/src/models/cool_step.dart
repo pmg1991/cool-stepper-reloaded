@@ -23,6 +23,11 @@ class CoolStep {
   /// [default] value is null (no validation)
   final String? Function()? validation;
 
+  /// [alignment] will customize [content] alignment between header (if enabled) and buttons
+  ///
+  /// [default] is [Alignment.topCenter]
+  final Alignment alignment;
+
   static String? _noValidation() => null;
 
   CoolStep({
@@ -30,5 +35,6 @@ class CoolStep {
     this.validation = _noValidation,
     this.title = '',
     this.subtitle = '',
+    this.alignment = Alignment.topCenter,
   });
 }
