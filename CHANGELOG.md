@@ -1,3 +1,6 @@
+## [3.0.0] - 01/05/2021
+ - Removed deprecated methods
+
 ## [2.3.0] - 01/05/2021
  - Added [alignment] to [CoolStep], to change content aligment over the header and button elements
 
