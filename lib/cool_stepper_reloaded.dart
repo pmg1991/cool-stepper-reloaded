@@ -22,7 +22,7 @@ class CoolStepper extends StatefulWidget {
 
   /// [contentPadding] is the padding for the content inside the stepper
   ///
-  ///  [default] value is EdgeInsets.symmetric(horizontal: 20.0)
+  ///  [default] value is EdgeInsets.zero (no Padding)
   final EdgeInsetsGeometry contentPadding;
 
   /// [CoolStepperConfig] is the widget configuration, set every text color and style
@@ -41,7 +41,7 @@ class CoolStepper extends StatefulWidget {
   const CoolStepper({
     required this.steps,
     required this.onCompleted,
-    this.contentPadding = const EdgeInsets.symmetric(horizontal: 20.0),
+    this.contentPadding = EdgeInsets.zero,
     this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
     this.isHeaderEnabled = true,
@@ -82,7 +82,7 @@ class _CoolStepperState extends State<CoolStepper> {
     final validation = widget.steps[currentStep].validation;
 
     /// [validation] is null, no validation rule
-    if (validation == null) {
+    if (validation == null || validation() == null) {
       if (!_isLast(currentStep)) {
         setState(() {
           currentStep++;

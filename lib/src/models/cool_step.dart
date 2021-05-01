@@ -21,12 +21,14 @@ class CoolStep {
   /// [validation] will be run to validate if user can go to next step,
   ///
   /// [default] value is null (no validation)
-  final String Function()? validation;
+  final String? Function()? validation;
+
+  static String? _noValidation() => null;
 
   CoolStep({
     required this.content,
+    this.validation = _noValidation,
     this.title = '',
     this.subtitle = '',
-    this.validation,
   });
 }

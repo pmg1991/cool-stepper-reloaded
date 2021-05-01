@@ -51,12 +51,12 @@ class CoolStepperConfig {
   /// This is the textStyle for the subtitle text
   final TextStyle subtitleTextStyle;
 
-  /// A List of string that when supplied will override 'backText'
+  /// [backTextList] Contains a list of string that when supplied will override [backText]
   ///
-  /// Must be one less than the number of steps since for the first step, the backText won't be visible
+  /// Must be one less than the number of steps since for the first step, the [backText] won't be visible
   final List<String>? backTextList;
 
-  /// A List of string that when supplied will override 'nextText'
+  /// [nextTextList] Contains a List of string that when supplied will override [nextText]
   ///
   /// Must be one less than the number of steps since the 'finalText' attribute is able to set the value for the final step's next button
   final List<String>? nextTextList;

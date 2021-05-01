@@ -1,5 +1,6 @@
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:flutter/material.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (!_formKey.currentState!.validate()) {
             return 'Fill form correctly';
           }
-          return 'null';
+          return null;
         },
       ),
       CoolStep(
@@ -94,21 +95,29 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        validation: () {
-          return 'null';
-        },
       ),
     ];
 
     final stepper = CoolStepper(
       showErrorSnackbar: true,
+      contentPadding: EdgeInsets.all(10),
       onCompleted: () {
-        print('Steps completed!');
+        final flush = Flushbar(
+          message: 'Steps completed!',
+          flushbarStyle: FlushbarStyle.FLOATING,
+          margin: EdgeInsets.all(8.0),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          icon: Icon(
+            Icons.check_circle_outline_outlined,
+            size: 28.0,
+            color: Colors.green,
+          ),
+          duration: Duration(seconds: 2),
+          leftBarIndicatorColor: Colors.green,
+        );
+        flush.show(context);
       },
       steps: steps,
-      config: CoolStepperConfig(
-        backText: 'PREV',
-      ),
     );
 
     return Scaffold(
