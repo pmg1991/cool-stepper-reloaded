@@ -1,6 +1,11 @@
+## [2.2.0] - 01/05/2021
+ - Fixed [isHeaderEnabled] logic
+ - Fixed Snackbar and next step logic
+ - Improved example
+ 
 ## [2.2.0] - 13/04/2021
  - Added [backTextStyle] to change the text style for the back button
-  - Added [nextTextStyle] to change the text style for the next button
+- Added [nextTextStyle] to change the text style for the next button
 
 ## [2.1.0] - 13/04/2021
  - Deprecated [iconColor], use [icon] instead.
