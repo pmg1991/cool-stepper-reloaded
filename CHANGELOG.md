@@ -1,5 +1,5 @@
 ## [2.3.0] - 01/05/2021
- - Added [alignment] to [CoolStep]
+ - Added [alignment] to [CoolStep], to change content aligment over the header and button elements
 
 ## [2.2.1] - 01/05/2021
  - Fixed [isHeaderEnabled] logic
