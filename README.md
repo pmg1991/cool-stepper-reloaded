@@ -52,7 +52,7 @@ validation: () {
 | onCompleted | Void Function()   | @required - A function that is triggers when all steps have been completed |                                         Null                                         |
 | steps       | List<CoolStep>    | @required                                                                  |                                         Null                                          |
 | config      | CoolStepperConfig | Helps to customize your stepper                                            | CoolStepperConfig(backText: "BACK", nextText: "NEXT", stepText: "STEP", ofText: "OF") |
-| alignment                                            | Alignment.topCenter | This will change content aligment, between header (if enabled) and button
+| alignment                                            | Alignment | Alignment.topCenter | This will change content aligment, between header (if enabled) and button
 
 ### CoolStepperConfig Properties
 
