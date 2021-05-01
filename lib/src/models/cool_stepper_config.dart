@@ -35,13 +35,6 @@ class CoolStepperConfig {
   /// This is the background color of the header
   final Color headerColor;
 
-  /// [Deprecated] Use [icon] instead
-  /// This is the color of the icon
-  ///
-  /// [This does not apply when icon is set]
-  @Deprecated('Use [icon] instead, this will be removed soon!')
-  final Color? iconColor;
-
   /// This icon replaces the default icon
   final Icon icon;
 
@@ -72,7 +65,6 @@ class CoolStepperConfig {
     this.stepText = 'STEP',
     this.ofText = 'OF',
     this.headerColor = const Color(0xffbdbdbd),
-    this.iconColor,
     this.icon = const Icon(
       Icons.help_outline,
       size: 18,

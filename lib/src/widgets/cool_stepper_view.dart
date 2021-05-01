@@ -51,15 +51,7 @@ class CoolStepperView extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 5.0),
-              Visibility(
-                visible: config.iconColor != null,
-                replacement: config.icon,
-                child: Icon(
-                  Icons.help_outline,
-                  size: 18,
-                  color: config.iconColor ?? Colors.black38,
-                ),
-              )
+              config.icon,
             ],
           ),
           SizedBox(height: 5.0),
