@@ -72,18 +72,16 @@ class CoolStepperView extends StatelessWidget {
     );
 
     /// [body] is always show, this will contain the [step] content
-    final body = Expanded(
-      child: SingleChildScrollView(
-        padding: contentPadding,
-        child: step.content,
-      ),
+    final body = SingleChildScrollView(
+      padding: contentPadding,
+      child: step.content,
     );
 
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: (isHeaderEnabled) ? [header, body] : [body],
-      ),
-    );
+    return (isHeaderEnabled)
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [header, Expanded(child: body)],
+          )
+        : body;
   }
 }
