@@ -53,6 +53,9 @@ validation: () {
 | steps       | List<CoolStep>    | @required                                                                  |                                         Null                                          |
 | config      | CoolStepperConfig | Helps to customize your stepper                                            | CoolStepperConfig(backText: "BACK", nextText: "NEXT", stepText: "STEP", ofText: "OF") |
 | alignment                                            | Alignment |  This will change content aligment, between header (if enabled) and button | Alignment.topCenter |
+| isHeaderEnabled          | bool       | Build a header for each step, the default value is true | true |
+| showErrorSnackbar          | bool       | Show snackbar with error, if validation fails. Error comes from return from validation function |
+
 
 ### CoolStepperConfig Properties
 
@@ -64,7 +67,6 @@ validation: () {
 | stepText          | String       | The text that describes the progress                                                                                                                                                            |                                    STEP                                     |
 | ofText            | String       | The text that describes the progress                                                                                                                                                            |                                     OF                                      |
 | headerColor       | Color        | This is the background color of the header                                                                                                                                                      |               Theme.of(context).primaryColor.withOpacity(0.1)               |
-| isHeaderEnabled          | bool       | Build a header for each step, the default value is true                                                                                                                                           |                                    true                                     |
 | (**DEPRECATED**) iconColor - Use icon instead.         | Color        | This is the color of the icon. **Warning:** This will be removed soon, use icon instead                                                                                                                                                                   |                                Color.black38                                |
 | icon              | Icon         | This icon replaces the default icon                                                                                                                                                             |              Icon(Icons.help_outline,size: 18,Colors.black38)               |
 | titleTextStyle    | TextStyle    | This is the textStyle for the title text                                                                                                                                                        | TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black38) |
