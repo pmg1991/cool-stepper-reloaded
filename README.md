@@ -54,7 +54,7 @@ validation: () {
 | config      | CoolStepperConfig | Helps to customize your stepper                                            | CoolStepperConfig(backText: "BACK", nextText: "NEXT", stepText: "STEP", ofText: "OF") |
 | alignment                                            | Alignment |  This will change content aligment, between header (if enabled) and button | Alignment.topCenter |
 | isHeaderEnabled          | bool       | Build a header for each step, the default value is true | true |
-| showErrorSnackbar          | bool       | Show snackbar with error, if validation fails. Error comes from return from validation function |
+| showErrorSnackbar          | bool       | Show snackbar with error, if validation fails. Error comes from return from validation function | false |
 
 
 ### CoolStepperConfig Properties
