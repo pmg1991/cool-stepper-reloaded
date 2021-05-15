@@ -19,7 +19,7 @@ class CoolStepper extends StatefulWidget {
   final List<CoolStep> steps;
 
   /// [onCompleted] is called at final step, use this to submit collected information
-  final VoidCallback onCompleted;
+  final VoidCallback? onCompleted;
 
   /// [contentPadding] is the padding for the content inside the stepper
   ///
@@ -41,7 +41,7 @@ class CoolStepper extends StatefulWidget {
 
   const CoolStepper({
     required this.steps,
-    required this.onCompleted,
+    this.onCompleted,
     this.contentPadding = EdgeInsets.zero,
     this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
@@ -79,6 +79,7 @@ class _CoolStepperState extends State<CoolStepper> {
     return widget.steps.length - 1 == index;
   }
 
+  final _doNothing = () => {};
   void onStepNext() {
     final validation = widget.steps[currentStep].validation;
 
@@ -91,7 +92,8 @@ class _CoolStepperState extends State<CoolStepper> {
         FocusScope.of(context).unfocus();
         switchToPage(currentStep);
       } else {
-        widget.onCompleted();
+        final callback = widget.onCompleted ?? _doNothing;
+        callback();
       }
       return;
     }
@@ -185,35 +187,35 @@ class _CoolStepperState extends State<CoolStepper> {
       if (_isFirst(currentStep)) {
         return NullWidget();
       }
-      return widget.config.backButton ??
-          TextButton(
-            onPressed: onStepBack,
-            child: Text(
+      return TextButton(
+        onPressed: onStepBack,
+        child: widget.config.backButton ??
+            Text(
               _getPreviousLabel(),
               style: widget.config.backTextStyle,
             ),
-          );
+      );
     }
 
     Widget _nextButton() {
       if (_isLast(currentStep)) {
-        return widget.config.finishButton ??
-            TextButton(
-              onPressed: onStepNext,
-              child: Text(
+        return TextButton(
+          onPressed: onStepNext,
+          child: widget.config.finishButton ??
+              Text(
                 _getFinishLabel(),
                 style: widget.config.nextTextStyle,
               ),
-            );
+        );
       } else {
-        return widget.config.nextButton ??
-            TextButton(
-              onPressed: onStepNext,
-              child: Text(
+        return TextButton(
+          onPressed: onStepNext,
+          child: widget.config.nextButton ??
+              Text(
                 _getNextLabel(),
                 style: widget.config.nextTextStyle,
               ),
-            );
+        );
       }
     }
 

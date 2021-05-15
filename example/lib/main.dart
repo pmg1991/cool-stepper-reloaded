@@ -1,6 +1,7 @@
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
+import 'package:ripple_button/ripple_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -100,26 +101,48 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ];
 
+    void _onFinish() {
+      final flush = Flushbar(
+        message: 'Steps completed!',
+        flushbarStyle: FlushbarStyle.FLOATING,
+        margin: EdgeInsets.all(8.0),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        icon: Icon(
+          Icons.check_circle_outline_outlined,
+          size: 28.0,
+          color: Colors.green,
+        ),
+        duration: Duration(seconds: 2),
+        leftBarIndicatorColor: Colors.green,
+      );
+      flush.show(context);
+    }
+
     final stepper = CoolStepper(
       showErrorSnackbar: true,
       isHeaderEnabled: false,
+      onCompleted: _onFinish,
       contentPadding: EdgeInsets.only(left: 40, right: 40),
-      onCompleted: () {
-        final flush = Flushbar(
-          message: 'Steps completed!',
-          flushbarStyle: FlushbarStyle.FLOATING,
-          margin: EdgeInsets.all(8.0),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          icon: Icon(
-            Icons.check_circle_outline_outlined,
-            size: 28.0,
-            color: Colors.green,
+      config: CoolStepperConfig(
+        finishButton: Container(
+          child: RippleButton(
+            text: 'Finish',
+            type: RippleButtonType.AMBER,
+            style: RippleButtonStyle(
+              width: 20,
+            ),
+            onPressed: () => {},
           ),
-          duration: Duration(seconds: 2),
-          leftBarIndicatorColor: Colors.green,
-        );
-        flush.show(context);
-      },
+        ),
+        backButton: RippleButton(
+          text: 'Back',
+          type: RippleButtonType.BLUE_TRANSLUCENT,
+          style: RippleButtonStyle(
+            width: 20,
+          ),
+          onPressed: () => {},
+        ),
+      ),
       steps: steps,
     );
 
