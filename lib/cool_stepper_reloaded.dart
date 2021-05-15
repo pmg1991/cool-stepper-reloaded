@@ -7,6 +7,7 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:cool_stepper_reloaded/src/models/cool_step.dart';
 import 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
+import 'package:cool_stepper_reloaded/src/models/null_widget.dart';
 import 'package:cool_stepper_reloaded/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
@@ -152,53 +153,77 @@ class _CoolStepperState extends State<CoolStepper> {
       ),
     );
 
-    String getNextLabel() {
+    String _getFinishLabel() {
+      return widget.config.finalText;
+    }
+
+    String _getNextLabel() {
       String nextLabel;
-      if (_isLast(currentStep)) {
-        nextLabel = widget.config.finalText;
+
+      if (widget.config.nextTextList != null) {
+        nextLabel = widget.config.nextTextList![currentStep];
       } else {
-        if (widget.config.nextTextList != null) {
-          nextLabel = widget.config.nextTextList![currentStep];
-        } else {
-          nextLabel = widget.config.nextText;
-        }
+        nextLabel = widget.config.nextText;
       }
+
       return nextLabel;
     }
 
-    String getPreviousLabel() {
+    String _getPreviousLabel() {
       String backLabel;
-      if (_isFirst(currentStep)) {
-        backLabel = '';
+
+      if (widget.config.backTextList != null) {
+        backLabel = widget.config.backTextList![currentStep - 1];
       } else {
-        if (widget.config.backTextList != null) {
-          backLabel = widget.config.backTextList![currentStep - 1];
-        } else {
-          backLabel = widget.config.backText;
-        }
+        backLabel = widget.config.backText;
       }
+
       return backLabel;
+    }
+
+    Widget _backButton() {
+      if (_isFirst(currentStep)) {
+        return NullWidget();
+      }
+      return widget.config.backButton ??
+          TextButton(
+            onPressed: onStepBack,
+            child: Text(
+              _getPreviousLabel(),
+              style: widget.config.backTextStyle,
+            ),
+          );
+    }
+
+    Widget _nextButton() {
+      if (_isLast(currentStep)) {
+        return widget.config.finishButton ??
+            TextButton(
+              onPressed: onStepNext,
+              child: Text(
+                _getFinishLabel(),
+                style: widget.config.nextTextStyle,
+              ),
+            );
+      } else {
+        return widget.config.nextButton ??
+            TextButton(
+              onPressed: onStepNext,
+              child: Text(
+                _getNextLabel(),
+                style: widget.config.nextTextStyle,
+              ),
+            );
+      }
     }
 
     final buttons = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          TextButton(
-            onPressed: onStepBack,
-            child: Text(
-              getPreviousLabel(),
-              style: widget.config.backTextStyle,
-            ),
-          ),
+          _backButton(),
           counter,
-          TextButton(
-            onPressed: onStepNext,
-            child: Text(
-              getNextLabel(),
-              style: widget.config.nextTextStyle,
-            ),
-          ),
+          _nextButton(),
         ],
       ),
     );

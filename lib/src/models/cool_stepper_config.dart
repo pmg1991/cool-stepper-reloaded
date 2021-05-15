@@ -2,25 +2,46 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
 class CoolStepperConfig {
+  /// [backButton] Replaces the back default button
+  /// [default] if null it will use custom design
+  final Widget? backButton;
+
   /// [backText] Changes the text that should be displayed for the back button
   ///
   /// [default] is 'BACK'
+  /// No effects if [backButton] is setted
   final String backText;
 
   /// [backTextStyle] Changes the text style for the back button
   ///
   /// [default] is TextStyle(color: Colors.grey)
+  /// No effects if [backButton] is setted
   final TextStyle backTextStyle;
+
+  /// [nextButton] Replaces the next default button
+  /// [default] if null it will use custom design
+  final Widget? nextButton;
 
   /// [nextText] Changes the text that should be displayed for the next button
   ///
   /// [default] is 'NEXT'
+  /// No effects if [nextButton] is setted
   final String nextText;
 
   /// [nextTextStyle] Changes the text style for the next button
   ///
   /// [default] is TextStyle(color: Colors.green)
+  /// No effects if [nextButton] is setted
   final TextStyle nextTextStyle;
+
+  /// [nextButton] Replaces the next default button
+  /// [default] if null it will use custom design
+  final Widget? finishButton;
+
+  /// The text that should be displayed for the next button on the final step
+  ///
+  /// [default] is 'FINISH'
+  final String finalText;
 
   /// [stepText] Changes The text that describes the progress
   ///
@@ -54,12 +75,10 @@ class CoolStepperConfig {
   /// Must be one less than the number of steps since the 'finalText' attribute is able to set the value for the final step's next button
   final List<String>? nextTextList;
 
-  /// The text that should be displayed for the next button on the final step
-  ///
-  /// [default] is 'FINISH'
-  final String finalText;
-
   const CoolStepperConfig({
+    this.nextButton,
+    this.backButton,
+    this.finishButton,
     this.backText = 'PREV',
     this.nextText = 'NEXT',
     this.stepText = 'STEP',
