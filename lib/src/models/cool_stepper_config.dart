@@ -57,10 +57,17 @@ class CoolStepperConfig {
   /// The text that should be displayed for the next button on the final step
   ///
   /// [default] is 'FINISH'
+  /// If [finalButton] is set, this will be ignored
   final String finalText;
+
+  /// This will override the final button default widget
+  /// If this attribute is setted, it will ignore [finalText]
+  /// [default] is 'FINISH'
+  final Widget? finalButton;
 
   const CoolStepperConfig({
     this.backText = 'PREV',
+    this.finalButton,
     this.nextText = 'NEXT',
     this.stepText = 'STEP',
     this.ofText = 'OF',

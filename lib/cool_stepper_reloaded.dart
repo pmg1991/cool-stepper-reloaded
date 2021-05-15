@@ -53,8 +53,7 @@ class CoolStepper extends StatefulWidget {
 
 class _CoolStepperState extends State<CoolStepper> {
   final PageController _controller = PageController();
-
-  int currentStep = 0;
+  int _currentStep = 0;
 
   @override
   void dispose() {
@@ -62,8 +61,8 @@ class _CoolStepperState extends State<CoolStepper> {
     super.dispose();
   }
 
-  Future<void>? switchToPage(int page) {
-    _controller.animateToPage(
+  Future<void> _switchToPage(int page) {
+    return _controller.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
@@ -79,16 +78,16 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   void onStepNext() {
-    final validation = widget.steps[currentStep].validation;
+    final validation = widget.steps[_currentStep].validation;
 
     /// [validation] is null, no validation rule
     if (validation == null || validation() == null) {
-      if (!_isLast(currentStep)) {
+      if (!_isLast(_currentStep)) {
         setState(() {
-          currentStep++;
+          _currentStep++;
         });
         FocusScope.of(context).unfocus();
-        switchToPage(currentStep);
+        _switchToPage(_currentStep);
       } else {
         widget.onCompleted();
       }
@@ -118,11 +117,11 @@ class _CoolStepperState extends State<CoolStepper> {
   }
 
   void onStepBack() {
-    if (!_isFirst(currentStep)) {
+    if (!_isFirst(_currentStep)) {
       setState(() {
-        currentStep--;
+        _currentStep--;
       });
-      switchToPage(currentStep);
+      _switchToPage(_currentStep);
     }
   }
 
@@ -145,7 +144,7 @@ class _CoolStepperState extends State<CoolStepper> {
 
     final counter = Container(
       child: Text(
-        '${widget.config.stepText} ${currentStep + 1} ${widget.config.ofText} ${widget.steps.length}',
+        '${widget.config.stepText} ${_currentStep + 1} ${widget.config.ofText} ${widget.steps.length}',
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -154,25 +153,23 @@ class _CoolStepperState extends State<CoolStepper> {
 
     String getNextLabel() {
       String nextLabel;
-      if (_isLast(currentStep)) {
-        nextLabel = widget.config.finalText;
+
+      if (widget.config.nextTextList != null) {
+        nextLabel = widget.config.nextTextList![_currentStep];
       } else {
-        if (widget.config.nextTextList != null) {
-          nextLabel = widget.config.nextTextList![currentStep];
-        } else {
-          nextLabel = widget.config.nextText;
-        }
+        nextLabel = widget.config.nextText;
       }
+
       return nextLabel;
     }
 
-    String getPreviousLabel() {
+    String _getPreviousLabel() {
       String backLabel;
-      if (_isFirst(currentStep)) {
+      if (_isFirst(_currentStep)) {
         backLabel = '';
       } else {
         if (widget.config.backTextList != null) {
-          backLabel = widget.config.backTextList![currentStep - 1];
+          backLabel = widget.config.backTextList![_currentStep - 1];
         } else {
           backLabel = widget.config.backText;
         }
@@ -180,25 +177,44 @@ class _CoolStepperState extends State<CoolStepper> {
       return backLabel;
     }
 
+    Widget _getBackButton() {
+      return TextButton(
+        onPressed: onStepBack,
+        child: Text(
+          _getPreviousLabel(),
+          style: widget.config.backTextStyle,
+        ),
+      );
+    }
+
+    Widget _getNextButton() {
+      if (_isLast(_currentStep)) {
+        return widget.config.finalButton ??
+            TextButton(
+              onPressed: onStepNext,
+              child: Text(
+                widget.config.finalText,
+                style: widget.config.nextTextStyle,
+              ),
+            );
+      } else {
+        return TextButton(
+          onPressed: onStepNext,
+          child: Text(
+            getNextLabel(),
+            style: widget.config.nextTextStyle,
+          ),
+        );
+      }
+    }
+
     final buttons = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          TextButton(
-            onPressed: onStepBack,
-            child: Text(
-              getPreviousLabel(),
-              style: widget.config.backTextStyle,
-            ),
-          ),
+          _getBackButton(),
           counter,
-          TextButton(
-            onPressed: onStepNext,
-            child: Text(
-              getNextLabel(),
-              style: widget.config.nextTextStyle,
-            ),
-          ),
+          _getNextButton(),
         ],
       ),
     );

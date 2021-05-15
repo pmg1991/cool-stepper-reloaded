@@ -7,7 +7,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,12 +32,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
-  String? selectedRole = 'Writer';
+  String? _selectedRole = 'Writer';
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _emailCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    void _onComplete() {
+      final flush = Flushbar(
+        message: 'Steps completed!',
+        flushbarStyle: FlushbarStyle.FLOATING,
+        margin: EdgeInsets.all(8.0),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        icon: Icon(
+          Icons.check_circle_outline_outlined,
+          size: 28.0,
+          color: Colors.green,
+        ),
+        duration: Duration(seconds: 2),
+        leftBarIndicatorColor: Colors.green,
+      );
+      flush.show(context);
+    }
+
     final steps = [
       CoolStep(
         title: 'Basic Information',
@@ -104,22 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       showErrorSnackbar: true,
       isHeaderEnabled: false,
       contentPadding: EdgeInsets.only(left: 40, right: 40),
-      onCompleted: () {
-        final flush = Flushbar(
-          message: 'Steps completed!',
-          flushbarStyle: FlushbarStyle.FLOATING,
-          margin: EdgeInsets.all(8.0),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          icon: Icon(
-            Icons.check_circle_outline_outlined,
-            size: 28.0,
-            color: Colors.green,
-          ),
-          duration: Duration(seconds: 2),
-          leftBarIndicatorColor: Colors.green,
-        );
-        flush.show(context);
-      },
+      onCompleted: _onComplete,
       steps: steps,
     );
 
@@ -154,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
     BuildContext? context,
     required String name,
   }) {
-    final isActive = name == selectedRole;
+    final isActive = name == _selectedRole;
 
     return Expanded(
       child: AnimatedContainer(
@@ -170,10 +171,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: RadioListTile(
           value: name,
           activeColor: Colors.white,
-          groupValue: selectedRole,
+          groupValue: _selectedRole,
           onChanged: (String? v) {
             setState(() {
-              selectedRole = v;
+              _selectedRole = v;
             });
           },
           title: Text(
