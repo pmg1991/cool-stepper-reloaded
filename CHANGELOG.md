@@ -1,3 +1,6 @@
+## [3.1.0] - 15/05/2021
+ - Added custom final widget [finalButton]
+
 ## [3.0.0] - 01/05/2021
  - Removed deprecated methods
 
