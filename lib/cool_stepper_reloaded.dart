@@ -189,11 +189,13 @@ class _CoolStepperState extends State<CoolStepper> {
       }
       return TextButton(
         onPressed: onStepBack,
-        child: widget.config.backButton ??
-            Text(
-              _getPreviousLabel(),
-              style: widget.config.backTextStyle,
-            ),
+        child: AbsorbPointer(
+          child: widget.config.backButton ??
+              Text(
+                _getPreviousLabel(),
+                style: widget.config.backTextStyle,
+              ),
+        ),
       );
     }
 
@@ -201,20 +203,24 @@ class _CoolStepperState extends State<CoolStepper> {
       if (_isLast(currentStep)) {
         return TextButton(
           onPressed: onStepNext,
-          child: widget.config.finishButton ??
-              Text(
-                _getFinishLabel(),
-                style: widget.config.nextTextStyle,
-              ),
+          child: AbsorbPointer(
+            child: widget.config.finishButton ??
+                Text(
+                  _getFinishLabel(),
+                  style: widget.config.nextTextStyle,
+                ),
+          ),
         );
       } else {
         return TextButton(
           onPressed: onStepNext,
-          child: widget.config.nextButton ??
-              Text(
-                _getNextLabel(),
-                style: widget.config.nextTextStyle,
-              ),
+          child: AbsorbPointer(
+            child: widget.config.nextButton ??
+                Text(
+                  _getNextLabel(),
+                  style: widget.config.nextTextStyle,
+                ),
+          ),
         );
       }
     }

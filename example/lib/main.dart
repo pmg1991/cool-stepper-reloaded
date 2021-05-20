@@ -142,6 +142,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           onPressed: () => {},
         ),
+        nextButton: RippleButton(
+          text: 'Next',
+          type: RippleButtonType.AMBER,
+          style: RippleButtonStyle(
+            width: 20,
+          ),
+          onPressed: () => {},
+        ),
       ),
       steps: steps,
     );
