@@ -1,7 +1,10 @@
-## [3.1.0] - 01/05/2021
+## [3.2.0] - 01/05/2021
  - Added Custom Button, [backButton], [nextButton], [finishButton]
  - Improved example
- 
+
+## [3.1.0] - 15/05/2021
+ - Added custom final widget [finishButton]
+
 ## [3.0.0] - 01/05/2021
  - Removed deprecated methods
 
