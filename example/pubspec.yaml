@@ -15,7 +15,7 @@ dependencies:
 
   cupertino_icons: ^0.1.3
   another_flushbar: ^1.10.17
-  ripple_button: ^2.1.1
+  ripple_button: ^2.2.1
 
 dev_dependencies:
   flutter_test:
