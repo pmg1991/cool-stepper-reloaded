@@ -9,18 +9,20 @@ This project was forked from [Cool Stepper](https://github.com/emrade/flutter-co
 ## Screenshots
 
 
-### **Header** enabled, not **centered** and default button 
+### **Header** enabled and with default button 
 
 <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/1.png" width="150"/>  <img src="https://raw.githubusercontent.com/emrade/flutter-cool-stepper/master/screenshots/2.png" width="150"/>
 
 
-### **Header** disabled, **centered** and with custom button [Ripple Button](https://pub.dev/packages/ripple_button)
+### **Header** disabled and with custom button [Ripple Button](https://pub.dev/packages/ripple_button)
 <img src="https://user-images.githubusercontent.com/6011385/119211643-cdbe0380-ba89-11eb-9520-92e2e369c5d3.png" width="150"/>  <img src="https://user-images.githubusercontent.com/6011385/119211557-38227400-ba89-11eb-9233-142270d1028c.png" width="150"/>
 
 ### Example
 
 ```
 CoolStepper(
+   showErrorSnackbar: false,   // If true, snackbar will be show if there is any error at form. If false, no snackbar will be shown
+   isHeaderEnabled: false,    // If true, header will be shown. if false, header will be disabled
    onCompleted: () => { // submit information to server },
    steps: List<CoolStep>[
        CoolStep(
