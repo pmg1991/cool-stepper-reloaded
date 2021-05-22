@@ -7,7 +7,6 @@ import 'package:another_flushbar/flushbar.dart';
 
 import 'package:cool_stepper_reloaded/src/models/cool_step.dart';
 import 'package:cool_stepper_reloaded/src/models/cool_stepper_config.dart';
-import 'package:cool_stepper_reloaded/src/models/null_widget.dart';
 import 'package:cool_stepper_reloaded/src/widgets/cool_stepper_view.dart';
 import 'package:flutter/material.dart';
 
@@ -184,25 +183,26 @@ class _CoolStepperState extends State<CoolStepper> {
     }
 
     Widget _backButton() {
-      if (_isFirst(currentStep)) {
-        return NullWidget();
-      }
-      return TextButton(
-        onPressed: onStepBack,
+      return GestureDetector(
+        onTap: onStepBack,
         child: AbsorbPointer(
-          child: widget.config.backButton ??
-              Text(
-                _getPreviousLabel(),
-                style: widget.config.backTextStyle,
-              ),
+          child: AnimatedOpacity(
+            duration: Duration(milliseconds: 200),
+            opacity: _isFirst(currentStep) ? 0.0 : 1.0,
+            child: widget.config.backButton ??
+                Text(
+                  _getPreviousLabel(),
+                  style: widget.config.backTextStyle,
+                ),
+          ),
         ),
       );
     }
 
     Widget _nextButton() {
       if (_isLast(currentStep)) {
-        return TextButton(
-          onPressed: onStepNext,
+        return GestureDetector(
+          onTap: onStepNext,
           child: AbsorbPointer(
             child: widget.config.finishButton ??
                 Text(
@@ -212,8 +212,8 @@ class _CoolStepperState extends State<CoolStepper> {
           ),
         );
       } else {
-        return TextButton(
-          onPressed: onStepNext,
+        return GestureDetector(
+          onTap: onStepNext,
           child: AbsorbPointer(
             child: widget.config.nextButton ??
                 Text(

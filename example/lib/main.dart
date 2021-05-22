@@ -128,6 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: RippleButton(
             text: 'Finish',
             type: RippleButtonType.AMBER,
+            padding: EdgeInsets.only(right: 16, bottom: 6),
             style: RippleButtonStyle(
               width: 20,
             ),
@@ -137,14 +138,16 @@ class _MyHomePageState extends State<MyHomePage> {
         backButton: RippleButton(
           text: 'Back',
           type: RippleButtonType.BLUE_TRANSLUCENT,
+          padding: EdgeInsets.only(left: 16, bottom: 6),
           style: RippleButtonStyle(
-            width: 20,
+            width: 24,
           ),
           onPressed: () => {},
         ),
         nextButton: RippleButton(
-          text: 'Next',
+          text: '\bNext\b',
           type: RippleButtonType.AMBER,
+          padding: EdgeInsets.only(right: 16, bottom: 6),
           style: RippleButtonStyle(
             width: 20,
           ),

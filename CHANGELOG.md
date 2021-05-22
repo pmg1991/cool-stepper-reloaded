@@ -1,3 +1,7 @@
+## [3.2.1] - 21/05/2021
+ - Removed visual feedback on button press
+ - Update example
+
 ## [3.2.0] - 01/05/2021
  - Added Custom Button, [backButton], [nextButton], [finishButton]
  - Improved example
