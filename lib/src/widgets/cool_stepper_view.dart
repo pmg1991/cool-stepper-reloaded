@@ -1,5 +1,6 @@
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:cool_stepper_reloaded/src/models/cool_step.dart';
+import 'package:cool_stepper_reloaded/src/rounded_corner_container/rounded_corner_container.dart';
 import 'package:flutter/material.dart';
 
 /// [CoolStepperView] is the step builder, each step page is build here
@@ -18,11 +19,17 @@ class CoolStepperView extends StatelessWidget {
   /// [default] is true
   final bool isHeaderEnabled;
 
+  /// [hasRoundedCorner] enable the rounded corner between step and header
+  ///
+  /// [default] is true
+  final bool hasRoundedCorner;
+
   const CoolStepperView({
     required this.step,
     required this.contentPadding,
     required this.config,
     required this.isHeaderEnabled,
+    required this.hasRoundedCorner,
   });
 
   @override
@@ -30,7 +37,6 @@ class CoolStepperView extends StatelessWidget {
     /// [header] contains title, description and icon
     final header = Container(
       width: double.infinity,
-      margin: EdgeInsets.only(bottom: 20.0),
       padding: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
         color: config.headerColor,
@@ -41,7 +47,7 @@ class CoolStepperView extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Text(
@@ -64,13 +70,21 @@ class CoolStepperView extends StatelessWidget {
     );
 
     /// [body] is always show, this will contain the [step] content
-    final body = Align(
+    Widget body = Align(
       alignment: step.alignment,
       child: SingleChildScrollView(
         padding: contentPadding,
         child: step.content,
       ),
     );
+
+    if (hasRoundedCorner) {
+      body = RoundedCornerContainer(
+        outsideColor: config.headerColor,
+        insideColor: step.color,
+        child: body,
+      );
+    }
 
     return (isHeaderEnabled)
         ? Column(

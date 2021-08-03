@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 /// [CoolStep] is the step widget
@@ -28,6 +29,10 @@ class CoolStep {
   /// [default] is [Alignment.topCenter]
   final Alignment alignment;
 
+  /// [color] will set the background color of the content,
+  /// it is used when you want round corners
+  final Color color;
+
   static String? _noValidation() => null;
 
   CoolStep({
@@ -35,6 +40,7 @@ class CoolStep {
     this.validation = _noValidation,
     this.title = '',
     this.subtitle = '',
+    this.color = Colors.white,
     this.alignment = Alignment.topCenter,
   });
 }

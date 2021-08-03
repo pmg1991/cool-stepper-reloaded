@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final stepper = CoolStepper(
       showErrorSnackbar: true,
-      isHeaderEnabled: false,
+      hasRoundedCorner: true,
       onCompleted: _onFinish,
       contentPadding: EdgeInsets.only(left: 40, right: 40),
       config: CoolStepperConfig(

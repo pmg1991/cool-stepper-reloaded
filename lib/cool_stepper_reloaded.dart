@@ -38,6 +38,11 @@ class CoolStepper extends StatefulWidget {
   /// [default] is true
   final bool isHeaderEnabled;
 
+  ///[hasRoundedCorner] enable the rounded corner between step and header
+  ///
+  /// [default] is true
+  final bool hasRoundedCorner;
+
   const CoolStepper({
     required this.steps,
     this.onCompleted,
@@ -45,6 +50,7 @@ class CoolStepper extends StatefulWidget {
     this.config = const CoolStepperConfig(),
     this.showErrorSnackbar = false,
     this.isHeaderEnabled = true,
+    this.hasRoundedCorner = true,
   });
 
   @override
@@ -140,6 +146,7 @@ class _CoolStepperState extends State<CoolStepper> {
             contentPadding: widget.contentPadding,
             config: widget.config,
             isHeaderEnabled: widget.isHeaderEnabled,
+            hasRoundedCorner: widget.hasRoundedCorner,
           );
         }).toList(),
       ),

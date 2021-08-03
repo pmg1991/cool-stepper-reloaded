@@ -1,3 +1,7 @@
+## [3.2.3] - 03/08/2021
+ - Added [color] to [step]
+ - Added [hasRoundedCorner] to make rounded corner content
+
 ## [3.2.2] - 02/08/2021
  - Added Step x Of x text style [stepOfTextStyle]
 
