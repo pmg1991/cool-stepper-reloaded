@@ -89,7 +89,7 @@ class CoolStepperConfig {
     this.nextText = 'NEXT',
     this.stepText = 'STEP',
     this.ofText = 'OF',
-    this.stepOfTextStyle = TextStyle(
+    this.stepOfTextStyle = const TextStyle(
       fontWeight: FontWeight.bold,
     ),
     this.headerColor = const Color(0xffbdbdbd),

@@ -1,3 +1,6 @@
+## [3.2.2] - 02/08/2021
+ - Added Step x Of x text style [stepOfTextStyle]
+
 ## [3.2.1] - 21/05/2021
  - Removed visual feedback on button press
  - Update example
