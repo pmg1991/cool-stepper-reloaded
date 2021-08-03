@@ -53,6 +53,12 @@ class CoolStepperConfig {
   /// [default] is 'OF'
   final String ofText;
 
+  /// [stepOfTextStyle] Changes the text style for the step x of x text
+  ///
+  /// [default] is TextStyle(color: Colors.green)
+  /// No effects if [stepOfTextStyle] is setted
+  final TextStyle stepOfTextStyle;
+
   /// This is the background color of the header
   final Color headerColor;
 
@@ -83,6 +89,9 @@ class CoolStepperConfig {
     this.nextText = 'NEXT',
     this.stepText = 'STEP',
     this.ofText = 'OF',
+    this.stepOfTextStyle = TextStyle(
+      fontWeight: FontWeight.bold,
+    ),
     this.headerColor = const Color(0xffbdbdbd),
     this.icon = const Icon(
       Icons.help_outline,

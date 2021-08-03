@@ -1,6 +1,6 @@
 name: cool_stepper_reloaded
 description: CoolStepper Reloaded is a new widget based on CoolStepper, that displays a step by step sequence of operations. it could be helpful for a form wizard or onboarding.
-version: 3.2.1
+version: 3.2.2
 homepage: https://github.com/lcsvcn/cool-stepper-reloaded/
 repository: https://github.com/lcsvcn/cool-stepper-reloaded/
 
@@ -11,11 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  another_flushbar: ^1.10.17
+  another_flushbar: ^1.10.24
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.11.0
+  pedantic: ^1.11.1
 
 flutter:

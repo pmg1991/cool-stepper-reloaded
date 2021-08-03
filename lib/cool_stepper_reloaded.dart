@@ -148,9 +148,7 @@ class _CoolStepperState extends State<CoolStepper> {
     final counter = Container(
       child: Text(
         '${widget.config.stepText} ${currentStep + 1} ${widget.config.ofText} ${widget.steps.length}',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: widget.config.stepOfTextStyle,
       ),
     );
 
