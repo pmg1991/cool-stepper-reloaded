@@ -62,6 +62,10 @@ class CoolStepperConfig {
   /// This is the background color of the header
   final Color headerColor;
 
+  /// [stepColor] will set the background color of the content,
+  /// it is used when you want round corners
+  final Color stepColor;
+
   /// This icon replaces the default icon
   final Icon icon;
 
@@ -93,6 +97,7 @@ class CoolStepperConfig {
       fontWeight: FontWeight.bold,
     ),
     this.headerColor = const Color(0xffbdbdbd),
+    this.stepColor = Colors.transparent,
     this.icon = const Icon(
       Icons.help_outline,
       size: 18,

@@ -1,3 +1,6 @@
+## [3.2.5] - 04/08/2021
+ - Move [color] from [step] to [config]
+ - Renamed [color] to [stepColor]
 ## [3.2.4] - 04/08/2021
  - Default [color] [step] is transparent
 

@@ -81,7 +81,7 @@ class CoolStepperView extends StatelessWidget {
     if (hasRoundedCorner) {
       body = RoundedCornerContainer(
         outsideColor: config.headerColor,
-        insideColor: step.color,
+        insideColor: config.stepColor,
         child: body,
       );
     }
