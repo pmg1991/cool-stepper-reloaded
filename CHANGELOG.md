@@ -1,4 +1,7 @@
-## [3.2.3] - 03/08/2021
+## [3.2.4] - 04/08/2021
+ - Default [color] [step] is transparent
+
+## [3.2.3] - 04/08/2021
  - Added [color] to [step]
  - Added [hasRoundedCorner] to make rounded corner content
 

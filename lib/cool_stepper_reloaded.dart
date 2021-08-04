@@ -76,13 +76,9 @@ class _CoolStepperState extends State<CoolStepper> {
     );
   }
 
-  bool _isFirst(int index) {
-    return index == 0;
-  }
+  bool _isFirst(int index) => (index == 0);
 
-  bool _isLast(int index) {
-    return widget.steps.length - 1 == index;
-  }
+  bool _isLast(int index) => (widget.steps.length - 1 == index);
 
   final _doNothing = () => {};
   void onStepNext() {

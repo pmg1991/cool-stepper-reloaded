@@ -40,7 +40,7 @@ class CoolStep {
     this.validation = _noValidation,
     this.title = '',
     this.subtitle = '',
-    this.color = Colors.white,
+    this.color = Colors.transparent,
     this.alignment = Alignment.topCenter,
   });
 }
