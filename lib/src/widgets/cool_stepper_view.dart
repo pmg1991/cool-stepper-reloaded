@@ -86,7 +86,7 @@ class CoolStepperView extends StatelessWidget {
       );
     }
 
-    return (isHeaderEnabled)
+    return (isHeaderEnabled && step.title.isNotEmpty)
         ? Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [header, Expanded(child: body)],
